@@ -1,2 +1,32 @@
 <h1>Social Investing</h1>
-<p>Hello World</p>
+
+<%= form_tag root_path, :method => 'Post' do %>
+	<div class="form-group">
+		<%=text_field_tag 'id', nil, placeholder: 'Enter Company Ticker Symbol', size:50, class: "form-control" %>
+		<%= submit_tag 'Lookup Stock Quote' %>
+	</div>
+<% end %>
+
+<br></br>
+
+<% if @stock %>
+	<p>@stock<p>
+	<h1><%=@stock.company_name%></h1>
+	<strong>Company name: </strong> <%= @stock.company_name %> - <%= @stock.symbol %><br/>
+	<strong>Sector: </strong> <%= @stock.sector%> <br/>
+	<strong>Market Capitalization: </strong> <%= number_to_human(@stock.market_cap, :format => '%n%u', :precision => 5, :units => { :thousand => 'K', :million => 'M', :billion => 'B' })%> <br/>
+	<strong>P/E Ratio: </strong><%= @stock.pe_ratio %><br/>
+	<strong>Opening Price: </strong><%=@stock.open %><br/>
+	<strong>Day's Range: </strong><%= %><%=@stock.low%> - <%=@stock.high%> <br/>
+	<strong>Closing Price</strong><%= @stock.close%><br/>
+	<strong>52 Week Low: </strong><%=@stock.week52_low%><br/>
+	<strong>52 Week High: </strong><%=@stock.week52_high%><br/>
+
+
+<% elsif @nothing%>
+	<%= @nothing %>
+<% end %>
+
+<% if @error %>
+	<%= @error %>
+<% end %>

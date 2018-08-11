@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SocialInvesting</title>
+    <title>Social Investing</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,11 @@
   </head>
 
   <body>
+
+    <%= render 'home/navbar' %>
+    <%= render 'home/flash'%>
+    <!-- <a href="/home/about">About us</a> -->
+    <!-- embedded ruby(grabbing code from other erb files) -->
     <%= yield %>
   </body>
 </html>
