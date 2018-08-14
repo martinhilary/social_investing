@@ -9,8 +9,34 @@
 
 <br></br>
 
+</div>
+
+
 <% if @stock %>
-	<p>@stock<p>
+<!-- Individual Stock Info -->
+<div class="tradingview-widget-container">
+  <div id="tradingview_13e98"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-FB/" rel="noopener" target="_blank"><span class="blue-text">AAPL chart</span></a> by TradingView</div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.widget(
+  {
+  "width": 980,
+  "height": 610,
+  "symbol": "NASDAQ:FB",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "Light",
+  "style": "1",
+  "locale": "en",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "allow_symbol_change": true,
+  "container_id": "tradingview_13e98"
+}
+  );
+  </script>
+</div>
 	<h1><%=@stock.company_name%></h1>
 	<strong>Company name: </strong> <%= @stock.company_name %> - <%= @stock.symbol %><br/>
 	<strong>Sector: </strong> <%= @stock.sector%> <br/>
@@ -25,6 +51,102 @@
 
 <% elsif @nothing%>
 	<%= @nothing %>
+
+<% else%>
+  <h1>
+    <!-- Indices Ticker -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/indices/" rel="noopener" target="_blank"><span class="blue-text">Index Quotes</span></a> by TradingView</div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+  {
+  "locale": "en",
+  "symbolsGroups": [
+    {
+      "symbols": [
+        {
+          "displayName": "S&P 500",
+          "name": "INDEX:SPX"
+        },
+        {
+          "displayName": "E-Mini S&P",
+          "name": "CME_MINI:ES1!"
+        },
+        {
+          "displayName": "Nasdaq 100",
+          "name": "INDEX:IUXX"
+        },
+        {
+          "displayName": "Dow 30",
+          "name": "INDEX:DOWI"
+        },
+        {
+          "displayName": "Volatility S&P 500",
+          "name": "INDEX:VIX"
+        }
+      ],
+      "name": "US & Canada"
+    },
+    {
+      "symbols": [
+        {
+          "displayName": "Euro Stoxx 50",
+          "name": "INDEX:MOY0"
+        },
+        {
+          "displayName": "FTSE 100",
+          "name": "FOREXCOM:UKXGBP"
+        },
+        {
+          "displayName": "DAX Index",
+          "name": "INDEX:DAX"
+        },
+        {
+          "displayName": "CAC 40 Index",
+          "name": "INDEX:CAC"
+        },
+        {
+          "displayName": "FTSE MIB",
+          "name": "MIL:FTSEMIB"
+        }
+      ],
+      "name": "Europe"
+    },
+    {
+      "symbols": [
+        {
+          "displayName": "Nikkei 225",
+          "name": "INDEX:NKY"
+        },
+        {
+          "displayName": "Hang Seng",
+          "name": "INDEX:HSI"
+        },
+        {
+          "displayName": "Nifty",
+          "name": "NSE:NIFTY"
+        },
+        {
+          "displayName": "S&P Topix USD",
+          "name": "INDEX:SSIX"
+        },
+        {
+          "displayName": "Kospi Composite",
+          "name": "INDEX:KQY0"
+        }
+      ],
+      "name": "Asia/Pacific"
+    }
+  ],
+  "title": "Indices",
+  "width": 1400,
+  "height": 450
+}
+
+
+</script>
+</div>
+  </h1>
 <% end %>
 
 <% if @error %>

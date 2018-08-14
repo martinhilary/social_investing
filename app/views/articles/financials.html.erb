@@ -1,0 +1,207 @@
+ <%= javascript_include_tag 'financial'%>
+<div class="financials-container">
+<h1>Financial Ratios</h1>
+<p>Ratio Analysis is a form of Financial Statement Analysis that is used to obtain a quick
+indication of a firm's financial performance in several key areas. Financial ratios are
+categorized according to the financial aspect of the business which the ratio measures.</p>
+<p>Financial ratios allow for comparisons</p>
+<ul>
+<li>between companies
+ <li>between industries
+ <li>between different time periods for one company
+ <li>between a single company and its industry average
+<p>Ratios generally hold no meaning unless they are benchmarked against something else, like
+past performance or another company. Thus, the ratios of firms in different industries, which
+face different risks, capital requirements, and competition are usually hard to compare.<p>
+<table style= "border: 1px solid black" id="financials">
+	<tbody>
+		<tr id="headers">
+			<td width="400"><strong>Financial Ratio</strong></td>
+			<td width="366"><strong>How to Calculate It</strong></td>
+			<td width="366"><strong>Explanation</strong></td>
+		</tr>
+		<tr>
+			<td><strong>Working Capital</strong></td>
+			<td>
+
+				<form name="workingCapital" action="" id="WR">
+				<p>Current Assets - Current Liabilities</p>
+					$<input type='text' placeholder="89,000" id="CA1" style="width:80px"> -
+					$<input type="text" placeholder= "61,000" id="CL1" style="width:80px" onkeyup="calculateWorkingCapital()">
+					<br/>
+					= <span id='sumwc'>28,000</span>
+				</form>
+
+			</td>
+			<td><p>An indicator of whether the company will be able to mmet its current obligations(pay its bills, meet its'payroll,make a loan payment,etc) If a company has current assets exactly equal to current liabilities. It has no working capital. The greater the amount of working capital the more likely they will be able to make their payments in time. </p></td>
+
+		</tr>
+		<tr>
+			<td><strong>Current Ratio</strong></td>
+			<td>
+				<form name="currentRatio" action="" id="CR">
+					<p>Current Assets/Current Liabilities</p>
+					$<input type='text' placeholder="89,000" id="CA2" style="width:80px"> ÷
+					$<input type="text" placeholder= "61,000" id="CL2" style="width:80px" onkeyup="calculateCurrentRatio()">
+					<br/>
+					= <span id='sumcr'>1.459</span>:1
+				</form>
+		</td>
+			<td><p>This tells you the relationship of current assets to cuurent liabilities. A ratio of 3:1 is better than 2:1. A 1:1 ratio means that there is no working capital</p></td>
+		</tr>
+		<tr>
+			<td><strong>Quick Ratio <br/>(Acid Test Ratio)</strong></td>
+			<td>
+				<form name="quickRatio" action="" id="QR">
+					<p>[Current Assets - Inventory]/Current Liabilities</p>
+					($<input type='text' placeholder="89,000" id="CA3" style="width:80px" onkeyup="calculateQuickRatio()">-
+					$<input type="text" placeholder= "30,000" id="inv" style="width:80px" onkeyup="calculateQuickRatio()">)/
+					$<input type="text" placeholder="61,000" id="CL3" style="width:80px" onkeyup="calculateQuickRatio()">
+					<br/>
+					= <span id='sumqr'>0.967</span>:1
+				</form>
+		</td>
+			<td><p>This ratio is similar to the current ratio except that inventory are excluded.This indicates that the relationships between the amount of assets that can be converted to cash relative to current liabilities</p></td>
+		</tr>
+
+
+		<tr>
+			<td><strong>Account Receivable Turnover(AR)</strong></td>
+			<td>
+				<form name="currentRatio" action="" id="CR">
+					<p>Net Credit Sales / Average Accounts Receivable</p>
+					$<input type='text' placeholder="89,000" id="ARCS" style="width:80px"> ÷
+					$<input type="text" placeholder= "61,000" id="AAR" style="width:80px" onkeyup="calculateAR()">
+					<br/>
+					= <span id='sumAR'>1.459</span>
+				</form>
+		</td>
+			<td><p>Accounts receivable turnover is the number of times per year that a business collects its average accounts receivable. The ratio is intended to evaluate the ability of a company to efficiently issue credit to its customers and collect funds from them in a timely manner</p></td>
+		</tr>
+	
+		<tr>
+			<td><strong>Days' Sales in Accounts Receivable (DSO)</strong></td>
+			<td>
+				<form name="dso" action="" id="dso">
+					<p>365 days(year) / AR turnover</p>
+					<span>365 days</span> ÷
+					<input type="text" placeholder= "11.90" id="ar_ratio" style="width:80px" onkeyup="calculateDSO()">
+					<br/>
+					= <span id='sumdso'>30.67 days</span>
+				</form>
+		</td>
+			<td><p>It is a financial ratio that illustrates how well a company's accounts receivables are being managed. The days sales outstanding figure is an index of the relationship between outstanding receivables and credit account sales achieved over a given period.</p></td>
+		</tr>
+
+		<tr>
+			<td><strong>Inventory Turnover</strong></td>
+			<td>
+				<form name="inventoryturnover" action="" id="IT">
+					<p>Cost of Goods Sold(COGS) / Average Inventory for the year</p>
+					$<input type='text' placeholder="380,000" id="COGS5" style="width:80px"> ÷
+					$<input type="text" placeholder= "30,000" id="avg_it" style="width:80px" onkeyup="calculateInventoryTurnover()">
+					<br/>
+					= <span id='sumIT'>12.67</span> days
+				</form>
+		</td>
+			<td><p>The ratio is intended to evaluate the ability of a company to efficiently issue credit to its customers and collect funds from them in a timely manner</p></td>
+		</tr>
+
+
+		<tr>
+			<td><strong>Days' Sales In Inventory(DSI) </strong></td>
+			<td>
+				<form name="dsi" action="" id="DSI">
+					<p>365 days(year)/ Inventory turnover </p>
+					<span>365 days</span> ÷
+					$<input type="text" placeholder= "12.67" id="IT2" style="width:80px" onkeyup="calculateDSI()">
+					<br/>
+					= <span id='sumdsi'>28.81</span> days
+				</form>
+		</td>
+			<td><p>It tells you the average number of days that it took to sell the average inventory held during the specified one-year period.  </p></td>
+		</tr>
+
+		<tr>
+			<td><strong>Debt-to-Equity</strong></td>
+			<td>
+				<form name="DE" action="" id="DE">
+					<p>[Total Liabilities / Total Shareholders'Equity] :1 </p>
+					$<input type='text' placeholder="481,000" id="TL7" style="width:80px"> ÷
+					$<input type="text" placeholder= "289,000" id="OE7" style="width:80px" onkeyup="calculateDE()">
+					<br/>
+					= <span id='sumDE'>1.66</span> <span>:1</span>
+				</form>
+		</td>
+			<td><p>It is used to gauge the extent to which a company is taking on debt as a means of leveraging (attempting to increase its value by using borrowed money to fund various projects). A high debt/equity ratio generally means that a company has been aggressive in financing its growth with debt. Aggressive leveraging practices are often associated with high levels of risk. This may result in volatile earnings as a result of the additional interest expense.</p></td>
+		</tr>
+
+		<tr>
+			<td><strong>Gross Margin</strong></td>
+			<td>
+				<form name="grossmargin" action="" id="GM">
+					<p>Gross Profit / Net Sales</p>
+					$<input type='text' placeholder="120,000" id="GP8" style="width:80px"> ÷
+					$<input type="text" placeholder= "500,000" id="Sales8" style="width:80px" onkeyup="calculateGM()">
+					<br/>
+					= <span id='sumgm'>24.0</span>%
+				</form>
+		</td>
+			<td><p>The gross margin represents the percent of total sales revenue that the company retains after incurring the direct costs associated with producing the goods and services it sells. The higher the percentage, the more the company retains on each dollar of sales, to service its other costs and debt obligations</p></td>
+		</tr>
+
+		<tr>
+			<td><strong>Profit Margin</strong></td>
+			<td>
+				<form name="profitmargin" action="" id="PM">
+					<p>Net Income after Tax / Net Sales</p>
+					$<input type='text' placeholder="23,000" id="NIT9" style="width:80px"> ÷
+					$<input type="text" placeholder= "500,000" id="Sales9" style="width:80px" onkeyup="calculatePM()">
+					<br/>
+					= <span id='sumPM'>4.6</span>%
+				</form>
+		</td>
+			<td><p>Profit per sales dollar after all expanses are deducted from sales</p></td>
+		</tr>
+
+		<tr>
+			<td><strong>Earnings Per Share (EPS)</strong></td>
+			<td>
+				<form name="eps" action="" id="eps">
+					<p>Net Income(post-tax) / Number of Shares </p>
+					$<input type='text' placeholder="23,000" id="NIT10" style="width:80px"> ÷
+					$<input type="text" placeholder= "100,000" id="sharesize" style="width:80px" onkeyup="calculateEPS()">
+					<br/>
+					= $<span id='sumeps'>0.23</span>
+				</form>
+		</td>
+			<td><p>Expresses the corporation's net income per tax on a per share of common stock basis</p></td>
+		</tr>
+
+		<tr>
+			<td><strong>Return on Stockholder's equity(ROE)</strong></td>
+			<td>
+				<form name="roe" action="" id="roe">
+					<p>Net Income / Shareholder's equity</p>
+					$<input type='text' placeholder="23,000" id="NIT11" style="width:80px"> ÷
+					$<input type="text" placeholder= "278,000" id="equity" style="width:80px" onkeyup="calculateROE()">
+					<br/>
+					= <span id='sumroe'>8.3</span>%
+				</form>
+		</td>
+			<td><p>
+				Return on equity (ROE) is a measure of profitability that calculates how many dollars of profit a company generates with each dollar of shareholders' equity. 
+			</p></td>
+		</tr>
+
+</tr>
+
+	</tbody>
+</table>
+<div id="header">
+	<div id="financial-show">
+	</div>
+</div>
+
+<input type="submit" name="Show Financials" onclick="showfinancials()">
+</div>

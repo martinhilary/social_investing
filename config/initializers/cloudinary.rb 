@@ -1,0 +1,7 @@
+Cloudinary.config do |config|
+  config.cloud_name = 'dn6w2aivd'
+  config.api_key = '272572898834315'
+  config.api_secret = 'uQE8xUTdk-4Yqi8E0vwtNR3xc38'
+  config.secure = true
+  config.cdn_subdomain = true
+end

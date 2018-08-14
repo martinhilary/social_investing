@@ -58,8 +58,8 @@ class StocksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to stocks_url, notice: 'Stock was successfully destroyed.' }
       format.json { head :no_content }
-    end
   end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
